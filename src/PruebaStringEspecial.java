@@ -18,7 +18,7 @@ public class PruebaStringEspecial {
 			+ "2- Agregar caracteres o subcadenas en posiciones especificas\n"
 			+ "3- Eliminar caracteres o subcadenas en posiciones especificas\n"
 			+ "4- Mostrar cadena en formato CaMeL CaSe especial\n"
-			+ "5- Mostar la cadena con la primer letra de cada palabra en mayúscula\n"
+			+ "5- Mostrar la cadena con la primer letra de cada palabra en mayúscula\n"
 			+ "6- Salir\n");
 			
 			try {
@@ -30,7 +30,6 @@ public class PruebaStringEspecial {
 			    	case 1:
 			    		break;
 			    	case 2:
-			    		se.agregarElementoEntre();
 			    		break;
 			    	case 3:
 			    		break;
@@ -39,9 +38,6 @@ public class PruebaStringEspecial {
 			    	case 5:
 			    		break;
 			    	case 6:
-			    		System.out.println();
-			    		break;
-			    	case 7:
 			    		candado = false;
 			    		break;
 			    	default:
@@ -52,7 +48,10 @@ public class PruebaStringEspecial {
 			}catch(InputMismatchException error) {
 				System.out.println("Entrada invalida <" + error + ">\n");
 				entrada.nextLine();
-			}	
+			}catch(StringIndexOutOfBoundsException error) {
+				System.out.println("\nLa entrada no es adecuada <" + error + ">\nno ingreses espacios sin sentido\n");
+				entrada.nextLine();	
+			}
 			
 		}while(candado);
 		

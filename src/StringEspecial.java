@@ -2,9 +2,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /*
- * 1.Mostrar la cadena invertida por letra y por palabras
  * 2.Agregar/eliminar caracteres y/o subcadenas en posiciones especificas
- * 3.Mostrar cadena en formato CaMeL CaSe especial
  * 4.Mostar la cadena con la primer letra de cada palabra en mayúscula
 */
 
@@ -15,57 +13,17 @@ public class StringEspecial {
 	
 	public StringEspecial() {}
 	
-	public void mostrarCadenaInvertida() {
-
-		String palabras[];
+	
+	public void primerLetraMayuscula() {
 		
-		for(int i=0; i<=cadena.length()-1; i++) {
-			System.out.print(cadena.substring(cadena.length()-1-i,cadena.length()-i));
-		}
-		
-		palabras = cadena.split(" ");
-		System.out.println();
-		
-		if(palabras.length!=1) {
-			for(int i=palabras.length-1; i>=0; i--) {
-				System.out.print(palabras[i] + " ");
-			}
-		}
+		String cad[] = cadena.split(" ");
 		
 		System.out.println();
-		System.out.println();
-	}
-
-
-	public String agregarElementoEntre() {
-		
-		int pos;
-		String cadenaNueva = "";
-		
-		do {
-
-		    System.out.println("\nIntroduce en que posicion se insertara el elemento: ");
-		    pos = entrada.nextInt();
-
-		    if(!(pos>-1 && pos<cadena.length())) {
-			    System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
-		    }else {
-		    	break;
-		    }
-
-		}while(true);
-
-		cadenaNueva = ingresarCadena2();
-
-		if(pos==0) {
-			cadenaNueva = cadenaNueva + cadena;
-		}else if(pos==cadena.length()) {
-			cadenaNueva = cadena + cadenaNueva;
-		}else {
-			cadenaNueva = cadena.substring(0, pos-1) + cadenaNueva + cadena.substring(pos, cadena.length()-1);
+		for(int i=0; i<cad.length; i++) {
+			System.out.print(cad[i].substring(0, 1).toUpperCase() + cad[i].substring(1, cad[i].length()) + " ");
 		}
-
-		return cadenaNueva;
+		System.out.println();
+		
 	}
 
 
@@ -116,6 +74,60 @@ public class StringEspecial {
 		}while(candado);
 		
 		return cadena;
+	}
+
+
+    public void mostrarCadenaInvertida() {
+
+		String palabras[];
+		
+		for(int i=0; i<=cadena.length()-1; i++) {
+			System.out.print(cadena.substring(cadena.length()-1-i,cadena.length()-i));
+		}
+		
+		palabras = cadena.split(" ");
+		System.out.println();
+		
+		if(palabras.length!=1) {
+			for(int i=palabras.length-1; i>=0; i--) {
+				System.out.print(palabras[i] + " ");
+			}
+		}
+		
+		System.out.println();
+		System.out.println();
+	}
+
+
+	public String agregarElementoEntre() {
+		
+		int pos;
+		String cadenaNueva = "";
+		
+		do {
+
+		    System.out.println("\nIntroduce en que posicion se insertara el elemento: ");
+		    pos = entrada.nextInt();
+
+		    if(!(pos>-1 && pos<cadena.length())) {
+			    System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
+		    }else {
+		    	break;
+		    }
+
+		}while(true);
+
+		cadenaNueva = ingresarCadena2();
+
+		if(pos==0) {
+			cadenaNueva = cadenaNueva + cadena;
+		}else if(pos==cadena.length()) {
+			cadenaNueva = cadena + cadenaNueva;
+		}else {
+			cadenaNueva = cadena.substring(0, pos-1) + cadenaNueva + cadena.substring(pos, cadena.length()-1);
+		}
+
+		return cadenaNueva;
 	}
 	
 }
