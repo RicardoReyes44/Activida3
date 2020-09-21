@@ -13,6 +13,81 @@ public class StringEspecial {
 	public StringEspecial() {}
 
 
+	public void eliminarElementoEntre() throws StringIndexOutOfBoundsException{
+		
+		byte opcion = 0;
+	    int pos = 0;
+		
+		if(cadena.length()==0) {
+			System.out.println("La cadena esta vacia");
+		}
+		else {
+		
+		    do {
+		    	
+		        if(cadena.length()==1) {
+		    		cadena = "";
+		    		System.out.println("Solo existia 1 elemento asi que solo ese se elimino");
+		    		break;
+		    	}else {
+			        System.out.println("\nIntroduce opcion: ");
+	                System.out.println("1.- Eliminar caracter");
+		            System.out.println("2.- Eliminar subcadena");
+			        opcion = entrada.nextByte();
+			
+			        if(opcion==1 || opcion==2) {
+			    	    do {
+				            System.out.println("\nIntroduce en que posicion se eliminara el elemento: ");
+				            pos = entrada.nextInt();
+
+				            if(!(pos>-1 && pos<cadena.length())) {
+					            System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
+				            }else {
+				    	        break;
+				            }
+
+				        }while(true);
+				        break;
+			        }else {
+				        System.out.println("Opcion invalida, prueba de nuevo");
+			        }
+		    	}
+		    }while(true);
+		    
+		    if(!cadena.equals("")) {
+		        if(opcion==1) {
+			        cadena = cadena.substring(0, pos) + cadena.substring(pos+1, cadena.length());
+		        }else {
+
+			        int cont = 0;
+			
+			        for(int i=0; i<cadena.length(); i++) {
+				        if(cadena.substring(i, i+1).equals(" ")) {
+					        cont++;
+				        }
+			        }
+
+			        if(cont==0) {
+				        cadena = "";
+			        }else {
+			    	    String palabras[] = cadena.split(" ");
+			    	    cadena = "";
+
+			    	    for(int i=0; i<palabras.length; i++) {
+			    		    if(i == pos) {
+			    			    continue;
+			    		    }
+			    		    cadena += palabras[i] + " ";
+			    	    }
+			        }
+		        }
+		    }
+		}
+		System.out.println(cadena);
+		
+	}
+
+
 	public void camelCaseEspecial() {
 		
 		for(int i=0; i<cadena.length(); i++) {
@@ -30,7 +105,7 @@ public class StringEspecial {
 	}
 
 
-	public void primerLetraMayuscula() {
+	public void primerLetraMayuscula() throws StringIndexOutOfBoundsException{
 		
 		String cad[] = cadena.split(" ");
 		
@@ -93,7 +168,7 @@ public class StringEspecial {
 	}
 
 
-    public void mostrarCadenaInvertida() {
+    public void mostrarCadenaInvertida() throws StringIndexOutOfBoundsException{
 
 		String palabras[];
 		
@@ -115,7 +190,7 @@ public class StringEspecial {
 	}
 
 
-	public String agregarElementoEntre() {
+	public void agregarElementoEntre() {
 		
 		int pos;
 		String cadenaNueva = "";
@@ -143,7 +218,7 @@ public class StringEspecial {
 			cadenaNueva = cadena.substring(0, pos-1) + cadenaNueva + cadena.substring(pos, cadena.length()-1);
 		}
 
-		return cadenaNueva;
+		System.out.println(cadenaNueva);
 	}
 	
 }
