@@ -1,10 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-/*
- * 2.Agregar/eliminar caracteres y/o subcadenas en posiciones especificas
-*/
-
 public class StringEspecial {
 	
 	Scanner entrada = new Scanner(System.in);
@@ -17,7 +13,14 @@ public class StringEspecial {
 		
 		byte opcion = 0;
 	    int pos = 0;
+	    int cont = 0;
 		
+	    for(int i=0; i<cadena.length(); i++) {
+	        if(cadena.substring(i, i+1).equals(" ")) {
+		        cont++;
+	        }
+        }
+	    
 		if(cadena.length()==0) {
 			System.out.println("La cadena esta vacia");
 		}
@@ -36,17 +39,6 @@ public class StringEspecial {
 			        opcion = entrada.nextByte();
 			
 			        if(opcion==1 || opcion==2) {
-			    	    do {
-				            System.out.println("\nIntroduce en que posicion se eliminara el elemento: ");
-				            pos = entrada.nextInt();
-
-				            if(!(pos>-1 && pos<cadena.length())) {
-					            System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
-				            }else {
-				    	        break;
-				            }
-
-				        }while(true);
 				        break;
 			        }else {
 				        System.out.println("Opcion invalida, prueba de nuevo");
@@ -56,22 +48,35 @@ public class StringEspecial {
 		    
 		    if(!cadena.equals("")) {
 		        if(opcion==1) {
+		        	do {
+			            System.out.println("\nIntroduce en que posicion se eliminara el elemento: ");
+			            pos = entrada.nextInt();
+
+			            if(!(pos>-1 && pos<cadena.length())) {
+				            System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
+			            }else {
+			    	        break;
+			            }
+			        }while(true);
 			        cadena = cadena.substring(0, pos) + cadena.substring(pos+1, cadena.length());
 		        }else {
-
-			        int cont = 0;
-			
-			        for(int i=0; i<cadena.length(); i++) {
-				        if(cadena.substring(i, i+1).equals(" ")) {
-					        cont++;
-				        }
-			        }
 
 			        if(cont==0) {
 				        cadena = "";
 			        }else {
 			    	    String palabras[] = cadena.split(" ");
 			    	    cadena = "";
+			    	    
+			    	    do {
+				            System.out.println("\nIntroduce en que posicion se eliminara el elemento: ");
+				            pos = entrada.nextInt();
+
+				            if(!(pos>-1 && pos<palabras.length)) {
+					            System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
+				            }else {
+				    	        break;
+				            }
+				        }while(true);
 
 			    	    for(int i=0; i<palabras.length; i++) {
 			    		    if(i == pos) {
@@ -111,7 +116,7 @@ public class StringEspecial {
 		
 		System.out.println();
 		for(int i=0; i<cad.length; i++) {
-			System.out.print(cad[i].substring(0, 1).toUpperCase() + cad[i].substring(1, cad[i].length()) + " ");
+			System.out.print(cad[i].substring(0, 1).toUpperCase() + cad[i].substring(1, cad[i].length()).toLowerCase() + " ");
 		}
 		System.out.println();
 		
@@ -215,10 +220,16 @@ public class StringEspecial {
 		}else if(pos==cadena.length()) {
 			cadenaNueva = cadena + cadenaNueva;
 		}else {
-			cadenaNueva = cadena.substring(0, pos-1) + cadenaNueva + cadena.substring(pos, cadena.length()-1);
+			cadenaNueva = cadena.substring(0, pos) + cadenaNueva + cadena.substring(pos, cadena.length());
 		}
+		
+		cadena = cadenaNueva;
+		System.out.println(cadena);
+	}
 
-		System.out.println(cadenaNueva);
+
+    public void limpieza() {
+		entrada.nextLine();
 	}
 	
 }

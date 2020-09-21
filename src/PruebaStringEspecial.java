@@ -31,15 +31,19 @@ public class PruebaStringEspecial {
 			    
 			    switch(opcion) {
 			    	case 1:
+			    		se.mostrarCadenaInvertida();
 			    		break;
 			    	case 2:
+			    		se.agregarElementoEntre();
 			    		break;
 			    	case 3:
 			    		se.eliminarElementoEntre();
 			    		break;
 			    	case 4:
+			    		se.camelCaseEspecial();
 			    		break;
 			    	case 5:
+			    		se.primerLetraMayuscula();
 			    		break;
 			    	case 6:
 			    		candado = false;
@@ -52,9 +56,11 @@ public class PruebaStringEspecial {
 			}catch(InputMismatchException error) {
 				System.out.println("Entrada invalida <" + error + ">\nDevolviendo al menu principal...");
 				entrada.nextLine();
+				se.limpieza();
 			}catch(StringIndexOutOfBoundsException error) {
 				System.out.println("\nLa entrada no es adecuada <" + error + ">\nno ingreses espacios sin sentido\nDevolviendo al menu principal...");
 				entrada.nextLine();
+				se.limpieza();
 			}
 			
 		}while(candado);
