@@ -34,6 +34,7 @@ public class PruebaStringEspecial {
 			    	case 3:
 			    		break;
 			    	case 4:
+			    		se.camelCaseEspecial();
 			    		break;
 			    	case 5:
 			    		break;

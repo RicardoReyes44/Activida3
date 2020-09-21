@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 /*
  * 2.Agregar/eliminar caracteres y/o subcadenas en posiciones especificas
- * 4.Mostar la cadena con la primer letra de cada palabra en mayúscula
 */
 
 public class StringEspecial {
@@ -12,8 +11,25 @@ public class StringEspecial {
 	String cadena;
 	
 	public StringEspecial() {}
-	
-	
+
+
+	public void camelCaseEspecial() {
+		
+		for(int i=0; i<cadena.length(); i++) {
+			if((int)cadena.charAt(i)==241) {
+				System.out.print(cadena.substring(i, i+1).toUpperCase());
+			}else if((int)cadena.charAt(i)==209) {
+				System.out.print(cadena.substring(i, i+1).toLowerCase());
+			}else if((int)cadena.charAt(i)>90) {
+				System.out.print(cadena.substring(i, i+1).toUpperCase());
+			}else {
+				System.out.print(cadena.substring(i, i+1).toLowerCase());
+			}
+		}
+		System.out.println();
+	}
+
+
 	public void primerLetraMayuscula() {
 		
 		String cad[] = cadena.split(" ");
