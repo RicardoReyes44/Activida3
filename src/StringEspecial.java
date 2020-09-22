@@ -200,31 +200,35 @@ public class StringEspecial {
 		int pos;
 		String cadenaNueva = "";
 		
-		do {
-
-		    System.out.println("\nIntroduce en que posicion se insertara el elemento: ");
-		    pos = entrada.nextInt();
-
-		    if(!(pos>-1 && pos<cadena.length())) {
-			    System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
-		    }else {
-		    	break;
-		    }
-
-		}while(true);
-
-		cadenaNueva = ingresarCadena2();
-
-		if(pos==0) {
-			cadenaNueva = cadenaNueva + cadena;
-		}else if(pos==cadena.length()) {
-			cadenaNueva = cadena + cadenaNueva;
+		if(this.cadena.equals("")) {
+			ingresarCadena();
 		}else {
-			cadenaNueva = cadena.substring(0, pos) + cadenaNueva + cadena.substring(pos, cadena.length());
-		}
+		    do {
+
+		        System.out.println("\nIntroduce en que posicion se insertara el elemento: ");
+		        pos = entrada.nextInt();
+
+		        if(!(pos>-1 && pos<cadena.length())) {
+			        System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
+		        }else {
+		    	    break;
+		        }
+
+		    }while(true);
+
+		    cadenaNueva = ingresarCadena2();
+
+		    if(pos==0) {
+			    cadenaNueva = cadenaNueva + cadena;
+		    }else if(pos==cadena.length()) {
+			    cadenaNueva = cadena + cadenaNueva;
+		    }else {
+			    cadenaNueva = cadena.substring(0, pos) + cadenaNueva + cadena.substring(pos, cadena.length());
+		    }
 		
-		cadena = cadenaNueva;
-		System.out.println(cadena);
+		    cadena = cadenaNueva;
+		    System.out.println(cadena);
+		}
 	}
 
 
