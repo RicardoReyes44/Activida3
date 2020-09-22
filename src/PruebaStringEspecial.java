@@ -58,11 +58,15 @@ public class PruebaStringEspecial {
 			    }
 	
 			}catch(InputMismatchException error) {
-				System.out.println("Entrada invalida <" + error + ">\nDevolviendo al menu principal...");
+				System.out.println("\nEntrada invalida <" + error + ">\nDevolviendo al menu principal...");
 				entrada.nextLine();
 				se.limpieza();
 			}catch(StringIndexOutOfBoundsException error) {
 				System.out.println("\nLa entrada no es adecuada <" + error + ">\nDevolviendo al menu principal...");
+				entrada.nextLine();
+				se.limpieza();
+			}catch(NumberFormatException error) {
+				System.out.println("\nFormato incorrecto de ingreso de datos <" + error + ">\nDevolviendo al menu principal...");
 				entrada.nextLine();
 				se.limpieza();
 			}
