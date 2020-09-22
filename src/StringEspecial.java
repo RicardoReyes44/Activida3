@@ -8,87 +8,68 @@ public class StringEspecial {
 	
 	public StringEspecial() {}
 
+	public void eliminarSubCadena() {
+		
+		String rango;
+		int inicio;
+		int fin;
 
-	public void eliminarElementoEntre() throws StringIndexOutOfBoundsException{
-		
-		byte opcion = 0;
-	    int pos = 0;
-	    int cont = 0;
-		
-	    for(int i=0; i<cadena.length(); i++) {
-	        if(cadena.substring(i, i+1).equals(" ")) {
-		        cont++;
-	        }
-        }
-	    
-		if(cadena.length()==0) {
+		if(cadena.equals("")) {
 			System.out.println("La cadena esta vacia");
-		}
-		else {
-		
-		    do {
-		    	
-		        if(cadena.length()==1) {
-		    		cadena = "";
-		    		System.out.println("Solo existia 1 elemento asi que solo ese se elimino");
-		    		break;
-		    	}else {
-			        System.out.println("\nIntroduce opcion: ");
-	                System.out.println("1.- Eliminar caracter");
-		            System.out.println("2.- Eliminar subcadena");
-			        opcion = entrada.nextByte();
+		}else if(cadena.length()==1) {
+			cadena = "";
+			System.out.println("Solo habia un elemento asi que se elimino ese");
+		}else {
 			
-			        if(opcion==1 || opcion==2) {
-				        break;
-			        }else {
-				        System.out.println("Opcion invalida, prueba de nuevo");
-			        }
-		    	}
-		    }while(true);
-		    
-		    if(!cadena.equals("")) {
-		        if(opcion==1) {
-		        	do {
-			            System.out.println("\nIntroduce en que posicion se eliminara el elemento: ");
-			            pos = entrada.nextInt();
+			do {
+				System.out.println("Introduce rango, ejemplo(3-6): ");
+				rango = entrada.nextLine();
+				System.out.println(rango.indexOf("-"));
+				inicio = Integer.parseInt(rango.substring(0, rango.indexOf("-")));
+				fin = Integer.parseInt(rango.substring(rango.indexOf("-")+1, rango.length()));
+				
+				if(inicio>=0 && fin<cadena.length() && rango.substring(rango.indexOf("-"), rango.indexOf("-")+1).equals("-") && inicio<=fin) {
+					break;
+				}else {
+					System.out.println("Te haz equivocado en el llenado, por favor vuelve a intentarlo");
+				}
 
-			            if(!(pos>-1 && pos<cadena.length())) {
-				            System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
-			            }else {
-			    	        break;
-			            }
-			        }while(true);
-			        cadena = cadena.substring(0, pos) + cadena.substring(pos+1, cadena.length());
-		        }else {
+			}while(true);
 
-			        if(cont==0) {
-				        cadena = "";
-			        }else {
-			    	    String palabras[] = cadena.split(" ");
-			    	    cadena = "";
-			    	    
-			    	    do {
-				            System.out.println("\nIntroduce en que posicion se eliminara el elemento: ");
-				            pos = entrada.nextInt();
-
-				            if(!(pos>-1 && pos<palabras.length)) {
-					            System.out.println("Posicion fuera de rango, por favor prueba de nuevo\n");
-				            }else {
-				    	        break;
-				            }
-				        }while(true);
-
-			    	    for(int i=0; i<palabras.length; i++) {
-			    		    if(i == pos) {
-			    			    continue;
-			    		    }
-			    		    cadena += palabras[i] + " ";
-			    	    }
-			        }
-		        }
-		    }
+			if(inicio==0 && fin==cadena.length()-1) {
+				cadena = "";
+			}else {
+				System.out.println(cadena.substring(fin+1, cadena.length()));
+				cadena = cadena.substring(0, inicio) + cadena.substring(fin+1, cadena.length());
+			}
+			System.out.println(cadena);
 		}
-		System.out.println(cadena);
+	}
+
+	public void eliminarCaracter() throws StringIndexOutOfBoundsException{
+		
+		int posicion;
+		
+		if(cadena.equals("")) {
+			System.out.println("La cadena esta vacia");
+		}else if(cadena.length()==1) {
+			cadena = "";
+			System.out.println("Solo habia un elemento asi que se elimino ese");
+		}else {
+			
+			do {
+				System.out.println("Introduce posicion");
+				posicion = entrada.nextInt();
+				
+				if(posicion>=0 && posicion<cadena.length()) {
+					break;
+				}else {
+					System.out.println("Posicion inexistente, por favor vuelve a intentarlo");
+				}
+			}while(true);
+			cadena = cadena.substring(0, posicion) + cadena.substring(posicion+1, cadena.length());
+			System.out.println(cadena);
+		}
 		
 	}
 
@@ -177,21 +158,27 @@ public class StringEspecial {
 
 		String palabras[];
 		
-		for(int i=0; i<=cadena.length()-1; i++) {
-			System.out.print(cadena.substring(cadena.length()-1-i,cadena.length()-i));
-		}
-		
-		palabras = cadena.split(" ");
-		System.out.println();
-		
-		if(palabras.length!=1) {
-			for(int i=palabras.length-1; i>=0; i--) {
-				System.out.print(palabras[i] + " ");
+		if(cadena==""){
+			System.out.println("La cadena esta vacia");
+		}if(cadena.length()==1) {
+			System.out.println("No habra diferencia, por favor prueba cuando tengas mas elementos");
+		}else {
+			for(int i=0; i<=cadena.length()-1; i++) {
+				System.out.print(cadena.substring(cadena.length()-1-i,cadena.length()-i));
 			}
+			
+			palabras = cadena.split(" ");
+			System.out.println();
+			
+			if(palabras.length!=1) {
+				for(int i=palabras.length-1; i>=0; i--) {
+					System.out.print(palabras[i] + " ");
+				}
+			}
+			
+			System.out.println();
+			System.out.println();
 		}
-		
-		System.out.println();
-		System.out.println();
 	}
 
 

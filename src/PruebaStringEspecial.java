@@ -19,10 +19,11 @@ public class PruebaStringEspecial {
 			System.out.println("---------------------------");
 			System.out.print("\n1- Mostrar la cadena invertida por letra y por palabras\n" 
 			+ "2- Agregar caracteres o subcadenas en posiciones especificas\n"
-			+ "3- Eliminar caracteres o subcadenas en posiciones especificas\n"
-			+ "4- Mostrar cadena en formato CaMeL CaSe especial\n"
-			+ "5- Mostrar la cadena con la primer letra de cada palabra en mayúscula\n"
-			+ "6- Salir\n");
+			+ "3- Eliminar caracter en posicion especifica\n"
+			+ "4- Eliminar subcadenas en posiciones especificas\n"
+			+ "5- Mostrar cadena en formato CaMeL CaSe especial\n"
+			+ "6- Mostrar la cadena con la primer letra de cada palabra en mayúscula\n"
+			+ "7- Salir\n");
 			
 			try {
 
@@ -37,15 +38,18 @@ public class PruebaStringEspecial {
 			    		se.agregarElementoEntre();
 			    		break;
 			    	case 3:
-			    		se.eliminarElementoEntre();
+			    		se.eliminarCaracter();
 			    		break;
 			    	case 4:
-			    		se.camelCaseEspecial();
+			    		se.eliminarSubCadena();
 			    		break;
 			    	case 5:
-			    		se.primerLetraMayuscula();
+			    		se.camelCaseEspecial();
 			    		break;
 			    	case 6:
+			    		se.primerLetraMayuscula();
+			    		break;
+			    	case 7:
 			    		candado = false;
 			    		break;
 			    	default:
@@ -58,7 +62,7 @@ public class PruebaStringEspecial {
 				entrada.nextLine();
 				se.limpieza();
 			}catch(StringIndexOutOfBoundsException error) {
-				System.out.println("\nLa entrada no es adecuada <" + error + ">\nno ingreses espacios sin sentido\nDevolviendo al menu principal...");
+				System.out.println("\nLa entrada no es adecuada <" + error + ">\nDevolviendo al menu principal...");
 				entrada.nextLine();
 				se.limpieza();
 			}
