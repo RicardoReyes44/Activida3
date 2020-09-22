@@ -39,7 +39,6 @@ public class StringEspecial {
 			if(inicio==0 && fin==cadena.length()-1) {
 				cadena = "";
 			}else {
-				System.out.println(cadena.substring(fin+1, cadena.length()));
 				cadena = cadena.substring(0, inicio) + cadena.substring(fin+1, cadena.length());
 			}
 			System.out.println(cadena);
