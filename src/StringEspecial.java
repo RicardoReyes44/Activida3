@@ -24,7 +24,6 @@ public class StringEspecial {
 			do {
 				System.out.println("Introduce rango, ejemplo(3-6): ");
 				rango = entrada.nextLine();
-				System.out.println(rango.indexOf("-"));
 				inicio = Integer.parseInt(rango.substring(0, rango.indexOf("-")));
 				fin = Integer.parseInt(rango.substring(rango.indexOf("-")+1, rango.length()));
 				
