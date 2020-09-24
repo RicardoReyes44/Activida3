@@ -68,7 +68,6 @@ public class PruebaStringEspecial {
 			}catch(NumberFormatException error) {
 				System.out.println("\nFormato incorrecto de ingreso de datos <" + error + ">\nDevolviendo al menu principal...");
 				entrada.nextLine();
-				se.limpieza();
 			}
 			
 		}while(candado);
